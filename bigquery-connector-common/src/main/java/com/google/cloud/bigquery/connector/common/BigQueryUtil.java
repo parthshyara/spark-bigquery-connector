@@ -500,11 +500,11 @@ public class BigQueryUtil {
       @SuppressWarnings("Varifier")
       StandardTableDefinition sdt = (StandardTableDefinition) definition;
       TimePartitioning timePartitioning = sdt.getTimePartitioning();
-      if (timePartitioning != null) {
+      if (timePartitioning != null && timePartitioning.getField() != null) {
         return ImmutableList.of(timePartitioning.getField());
       }
       RangePartitioning rangePartitioning = sdt.getRangePartitioning();
-      if (rangePartitioning != null) {
+      if (rangePartitioning != null && rangePartitioning.getField() != null) {
         return ImmutableList.of(rangePartitioning.getField());
       }
     }
